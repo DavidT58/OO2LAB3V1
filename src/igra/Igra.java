@@ -17,7 +17,6 @@ public class Igra extends Frame {
 	public Igra() {
 		super("Whack-a-mole");
 		add(basta, BorderLayout.CENTER);
-		add(panel(), BorderLayout.SOUTH);
 		setSize(500, 500);
 		setVisible(true);
 		dodajOsluskivace();
@@ -32,13 +31,6 @@ public class Igra extends Frame {
 			}
 		});
 		
-	}
-	
-	private Panel panel() {
-		Panel p = new Panel(new GridLayout(2,2));
-		p.add(test);
-		
-		return p;
 	}
 
 	public static void main(String[] args) {

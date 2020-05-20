@@ -1,6 +1,7 @@
 package igra;
 
 import java.awt.Color;
+import java.awt.Graphics;
 
 public abstract class Zivotinja {
 	protected Color boja;
@@ -13,4 +14,6 @@ public abstract class Zivotinja {
 	public abstract void ispoljiEfekatUdarena();
 	
 	public abstract void ispoljiEfekatPobegla();
+	
+	protected abstract void crtaj(Graphics g);
 }

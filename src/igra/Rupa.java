@@ -14,7 +14,7 @@ public class Rupa extends Canvas implements Runnable {
 	
 	public Rupa(Basta b) {
 		basta = b;
-		nit.start();
+		//nit.start();
 		ms=500;
 	}
 
@@ -58,8 +58,10 @@ public class Rupa extends Canvas implements Runnable {
 	@Override
 	public void paint(Graphics g) {
 		g.setColor(new Color(210, 105, 30));
-		g.fillRect(100, 100, 100, 100);
-		g.setColor(Color.BLACK);
-		g.drawRect(10, 10, 100, 100);
+		g.fillRect(15, 15, 50, 50);
+		setZivotinja(new Krtica(this));
+		if(zivotinja != null)
+			zivotinja.crtaj(g);
+			
 	}
 }
