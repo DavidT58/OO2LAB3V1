@@ -16,8 +16,11 @@ public class Basta extends Panel implements Runnable {
 		povrce = 100;
 		matrica = new Rupa[v][k];
 		for(int i = 0; i < v; i++)
-			for(int j = 0; j < k; j++)
+			for(int j = 0; j < k; j++) {
 				matrica[i][j] = new Rupa(this);
+				matrica[i][j].kreni();
+			}
+				
 		nit.start();
 	}
 	
