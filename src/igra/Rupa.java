@@ -17,14 +17,23 @@ public class Rupa extends Canvas implements Runnable {
 	public Zivotinja getZivotinja() { return zivotinja; }
 
 	public void setZivotinja(Zivotinja z) { zivotinja = z; }
+	
+	public void zgazi() {
+		if(zivotinja != null)
+			zivotinja.ispoljiEfekatUdarena(); 
+	}
+	
+	public boolean nitPokrenuta() { return nit.isAlive(); }
 
 	@Override
-	public void run() {
+	public void run() { 
 		
 	}
 	
 	@Override
 	public void paint(Graphics g) {
 		g.setColor(new Color(210, 105, 30));
+		g.fillRect(10, 10, 10, 10);
+		g.setColor(Color.BLACK);
 	}
 }
