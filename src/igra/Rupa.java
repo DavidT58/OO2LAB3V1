@@ -1,6 +1,7 @@
 package igra;
 
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Graphics;
 
 public class Rupa extends Canvas implements Runnable {
@@ -24,6 +25,6 @@ public class Rupa extends Canvas implements Runnable {
 	
 	@Override
 	public void paint(Graphics g) {
-		
+		g.setColor(new Color(210, 105, 30));
 	}
 }
