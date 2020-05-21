@@ -7,7 +7,7 @@ public class Krtica extends Zivotinja {
 
 	public Krtica(Rupa r) {
 		super(r);
-		
+		boja = Color.DARK_GRAY;
 	}
 
 	@Override
@@ -21,10 +21,9 @@ public class Krtica extends Zivotinja {
 	}
 
 	@Override
-	protected void crtaj(Graphics g) {
-		//g.drawOval(10, 10, 10, 10);
+	protected void crtaj(Graphics g, int x, int y) {
 		g.setColor(Color.DARK_GRAY);
-		g.fillOval(10, 10, 10, 10);
+		g.fillOval(x, y, 150, 150);
 		
 	}
 	

@@ -20,18 +20,15 @@ public class Basta extends Panel implements Runnable {
 		matrica = new Rupa[v][k];
 		for(int i = 0; i < v; i++)
 			for(int j = 0; j < k; j++) {
-				matrica[i][j] = new Rupa(this);
-				//matrica[i][j].kreni();
-			}
+				matrica[i][j] = new Rupa(this, 0, 0);
 				
-		//nit.start();
+			}
 	}
 	
 	@Override
 	public void paint(Graphics g) {
 		g.setColor(new Color(0,255,0));
-		g.fillRect(10, 10, 500, 500);
-		//g.drawRect(10, 10, 100, 100);
+		g.fillRect(0, 0, 640, 640);
 		for(int i = 0; i < kolona; i++)
 			for(int j = 0; j < vrsta; j++) {
 				matrica[i][j].paint(g);

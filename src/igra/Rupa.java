@@ -6,18 +6,20 @@ import java.awt.Graphics;
 
 public class Rupa extends Canvas implements Runnable {
 	
+	private Color boja;
 	private Basta basta;
 	private Thread nit = new Thread(this);
 	private boolean radi = false;
 	private Zivotinja zivotinja;
 	private int ms;
+	public int x, y;
 	
-	public Rupa(Basta b) {
+	public Rupa(Basta b, int x, int y) {
 		basta = b;
-		//nit.start();
 		ms=500;
-		setBackground(new Color(210, 105, 30));
-		setSize(50, 50);
+		boja = new Color(210, 105, 30);
+		this.x = x;
+		this.y = y;
 	}
 
 	public Zivotinja getZivotinja() { return zivotinja; }
@@ -59,10 +61,12 @@ public class Rupa extends Canvas implements Runnable {
 	
 	@Override
 	public void paint(Graphics g) {
-		repaint();
+		
+		g.setColor(boja);
+		g.fillRect(x, y, 150, 150);
 		setZivotinja(new Krtica(this));
 		if(zivotinja != null)
-			zivotinja.crtaj(g);
+			zivotinja.crtaj(g, x, y);
 			
 	}
 }

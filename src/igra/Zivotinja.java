@@ -15,5 +15,5 @@ public abstract class Zivotinja {
 	
 	public abstract void ispoljiEfekatPobegla();
 	
-	protected abstract void crtaj(Graphics g);
+	protected abstract void crtaj(Graphics g, int x, int y);
 }
