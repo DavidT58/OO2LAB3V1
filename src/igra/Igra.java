@@ -2,22 +2,19 @@ package igra;
 
 import java.awt.BorderLayout;
 import java.awt.Frame;
-import java.awt.GridLayout;
-import java.awt.Label;
-import java.awt.Panel;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+@SuppressWarnings("serial")
 public class Igra extends Frame {
 	
 	private Basta basta = new Basta(4,4);
-	private Label test = new Label("test label");
 	
 	
 	public Igra() {
 		super("Whack-a-mole");
 		add(basta, BorderLayout.CENTER);
-		setSize(650, 650);
+		setSize(750, 750);
 		setVisible(true);
 		dodajOsluskivace();
 		
