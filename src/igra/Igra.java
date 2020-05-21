@@ -14,7 +14,7 @@ public class Igra extends Frame {
 	public Igra() {
 		super("Whack-a-mole");
 		add(basta, BorderLayout.CENTER);
-		setSize(750, 750);
+		setSize(700, 700);
 		setVisible(true);
 		dodajOsluskivace();
 		

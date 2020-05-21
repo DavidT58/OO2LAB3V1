@@ -22,15 +22,15 @@ public class Basta extends Panel implements Runnable {
 		for(int i = 0; i < v; i++)
 			for(int j = 0; j < k; j++) {
 				matrica[i][j] = new Rupa(this);
-				matrica[i][j].setX(j*150 + j*20 + 20);
-				matrica[i][j].setY(i*150 + i*20 + 20);
+				matrica[i][j].setX(j*150 + j*10 + 10);
+				matrica[i][j].setY(i*150 + i*10 + 10);
 			}
 	}
 	
 	@Override
 	public void paint(Graphics g) {
 		g.setColor(new Color(0,255,0));
-		g.fillRect(0, 0, 700, 700);
+		g.fillRect(0, 0, 650, 650);
 		for(int i = 0; i < kolona; i++)
 			for(int j = 0; j < vrsta; j++) {
 				matrica[i][j].crtaj(g, matrica[i][j].getX(), matrica[i][j].getY());
