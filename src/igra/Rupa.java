@@ -54,13 +54,14 @@ public class Rupa extends Canvas implements Runnable {
 			while(!Thread.interrupted()) {
 				repaint();
 				synchronized(this) {
-					if(trenKorak >= brKoraka) {
-						trenKorak = 0;
-						Thread.sleep(2000);
-						zaustavi();
-					}
-					trenKorak++;
+					
 				}
+				if(trenKorak >= brKoraka) {
+					trenKorak = 0;
+					Thread.sleep(2000);
+					zaustavi();
+				}
+				trenKorak++;
 				Thread.sleep(100);
 			}
 		} catch (InterruptedException e) {}

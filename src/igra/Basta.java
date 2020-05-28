@@ -61,14 +61,15 @@ public class Basta extends Panel implements Runnable {
 		try {
 			while(!Thread.interrupted()) {
 				synchronized(this) {
-					Random r = new Random();
-					int r1 = r.nextInt(vrsta);
-					int r2 = r.nextInt(kolona);
-					if(rupe[r1][r2].getSlobodna()) {
-						rupe[r1][r2].setZivotinja(new Krtica(rupe[r1][r2]));
-						rupe[r1][r2].napraviNit();
-						rupe[r1][r2].pokreni();
-					}
+					
+				}
+				Random r = new Random();
+				int r1 = r.nextInt(vrsta);
+				int r2 = r.nextInt(kolona);
+				if(rupe[r1][r2].getSlobodna()) {
+					rupe[r1][r2].setZivotinja(new Krtica(rupe[r1][r2]));
+					rupe[r1][r2].napraviNit();
+					rupe[r1][r2].pokreni();
 				}
 				Thread.sleep(ms);
 			}
