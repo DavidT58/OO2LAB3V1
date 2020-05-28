@@ -80,14 +80,14 @@ public class Igra extends Frame {
 					uToku = false;
 					azuriraj();
 					System.out.println(uToku);
-					basta.pokreni();
+					basta.zavrsi();
 				}
 				else {
 					kreniStani.setLabel("STANI");
 					uToku = true;
 					azuriraj();
 					System.out.println(uToku);
-					basta.zavrsi();
+					basta.pokreni();
 				}
 			}
 		});
