@@ -3,8 +3,6 @@ package igra;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.util.concurrent.BrokenBarrierException;
 
 @SuppressWarnings("serial")
 public class Rupa extends Canvas implements Runnable {
@@ -39,11 +37,10 @@ public class Rupa extends Canvas implements Runnable {
 		slobodna = (zivotinja == null) ? true : false;
 	}
 	
-
 	public void zgazi() {
 		if(zivotinja != null)
 			zivotinja.ispoljiEfekatUdarena();
-		slobodna = false;
+		//slobodna = true; ???
 	}
 	
 	public boolean nitPokrenuta() {
@@ -85,6 +82,10 @@ public class Rupa extends Canvas implements Runnable {
 		if(nit != null)
 			nit.interrupt();
 		nit = null;
+		if(zivotinja != null && !zivotinja.udarena()) {
+			zivotinja.ispoljiEfekatPobegla();
+			basta.smanjiPovrce();
+		}
 		setZivotinja(null);
 		slobodna = true;
 	}

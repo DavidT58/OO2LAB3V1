@@ -1,7 +1,6 @@
 package igra;
 
 import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Panel;
 import java.awt.event.MouseAdapter;
@@ -30,8 +29,7 @@ public class Basta extends Panel implements Runnable {
 		for(int i = 0; i < vrsta; i++) {
 			for(int j = 0; j < kolona; j++) {
 				rupe[i][j] = new Rupa(this);
-				
-				Rupa t = rupe[i][j];//zato sto u listeneru ne moze rupe[i][j]
+				Rupa t = rupe[i][j];	//zato sto u listeneru ne moze rupe[i][j]
 				rupe[i][j].addMouseListener(new MouseAdapter() {
 					public void mouseClicked(MouseEvent e) {
 						System.out.println("Mouse clicked " + e.getX() + ", " + e.getY());
@@ -41,8 +39,13 @@ public class Basta extends Panel implements Runnable {
 				add(rupe[i][j]);
 			}
 		}
-		//nit.start();
 	}
+	
+	public void setInterval(int m) { ms = m; }
+	
+	public void smanjiPovrce() { povrce--; }
+	
+	public int getPovrce() { return povrce; }
 	
 	public int getBrojkoraka() { return brojKoraka; }
 	
@@ -75,6 +78,10 @@ public class Basta extends Panel implements Runnable {
 	}
 	
 	public synchronized void pokreni() {	
+		if(nit != null) {
+			nit = null;
+			nit = new Thread(this);
+		}
 		nit.start();
 	}
 	
@@ -82,7 +89,7 @@ public class Basta extends Panel implements Runnable {
 		nit.interrupt(); 
 		for(int i = 0; i < kolona; i++)
 			for(int j = 0 ; j < vrsta; j++)
-					rupe[i][j].zaustavi();	
+					rupe[i][j].zaustavi();
 	}
 	
 }
