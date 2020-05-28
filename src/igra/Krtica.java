@@ -12,7 +12,7 @@ public class Krtica extends Zivotinja {
 
 	@Override
 	public void ispoljiEfekatUdarena() {
-		
+		rupa.zavrsi();
 	}
 
 	@Override
@@ -21,10 +21,22 @@ public class Krtica extends Zivotinja {
 	}
 
 	@Override
-	public void crtaj() {
+	public void crtaj(int k) {
 		Graphics g = rupa.getGraphics();
 		g.setColor(Color.DARK_GRAY);
-		g.fillOval(0, 0, rupa.getWidth(), rupa.getHeight());
+		double procenat = k * 0.1;
+		int newWidth = (int)(rupa.getWidth() * procenat);
+		int newHeight = (int)(rupa.getHeight() * procenat);
+		int newX = rupa.getWidth()/2 - newWidth/2;
+		int newY = rupa.getHeight()/2 - newHeight/2;
+		g.fillOval(newX, newY, newWidth, newHeight);
+		
+		
 	}
-
+	/*
+	int newWidth = (int)(rupa.getWidth() * procenat);
+	int newHeight = (int)(rupa.getHeight() * procenat);
+	int newX = (int)(0.4);
+	int newY = (int)(rupa.getY() * procenat);
+	*/
 }

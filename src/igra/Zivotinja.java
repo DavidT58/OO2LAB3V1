@@ -19,5 +19,5 @@ public abstract class Zivotinja {
 	
 	public abstract void ispoljiEfekatPobegla();
 	
-	public abstract void crtaj();
+	public abstract void crtaj(int k);
 }

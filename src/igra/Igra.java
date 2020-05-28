@@ -17,11 +17,13 @@ import java.awt.event.WindowEvent;
 public class Igra extends Frame {
 	
 	private Basta basta;
+	private boolean radi;
 	CheckboxGroup tezina;
 	Checkbox lako;
 	Checkbox srednje;
 	Checkbox tesko;
 	Button kreniStani;
+	
 	
 	
 	public Igra() {
@@ -30,9 +32,11 @@ public class Igra extends Frame {
 		add(basta, BorderLayout.CENTER);
 		add(dodajMeni(), BorderLayout.EAST);
 		setSize(700, 700);
-		setVisible(true);
-		
+		radi = false;
+		basta.setBrojKoraka(10);
+		basta.pokreni();
 		dodajOsluskivace();
+		setVisible(true);
 	}
 	
 	private void dodajOsluskivace() {
@@ -44,11 +48,15 @@ public class Igra extends Frame {
 			}
 		});
 		
+		kreniStani.addActionListener(e -> {
+			
+		});
+		
 	}
 	
 	private Panel dodajMeni() {
 		Panel desniMeni = new Panel();
-		desniMeni.setLayout(new GridLayout(2, 1));
+		desniMeni.setLayout(new GridLayout(2, 0));
 		
 		Panel p = new Panel();
 		Panel q = new Panel();

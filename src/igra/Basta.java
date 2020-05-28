@@ -13,11 +13,10 @@ public class Basta extends Panel implements Runnable {
 	
 	private Rupa[][] rupe;
 	private int povrce;
-	private int interval;
+	private int ms;
 	private int brojKoraka;
 	private Thread nit = new Thread(this);
 	private int vrsta, kolona;
-	private int ms;
 	
 	public Basta(int v, int k) {
 		vrsta = v;
@@ -28,10 +27,10 @@ public class Basta extends Panel implements Runnable {
 		rupe = new Rupa[v][k];
 		setLayout(new GridLayout(v, k, 20, 20));
 		
-		for(int i = 0; i < v; i++) {
-			for(int j = 0; j < k; j++) {
+		for(int i = 0; i < vrsta; i++) {
+			for(int j = 0; j < kolona; j++) {
 				rupe[i][j] = new Rupa(this);
-				rupe[i][j].setZivotinja(new Krtica(rupe[i][j]));
+				
 				Rupa t = rupe[i][j];
 				rupe[i][j].addMouseListener(new MouseAdapter() {
 					public void mouseClicked(MouseEvent e) {
@@ -39,35 +38,31 @@ public class Basta extends Panel implements Runnable {
 						t.zgazi();
 					}
 				});
-				rupe[i][j].napraviNit();
-				rupe[i][j].pokreni();
 				add(rupe[i][j]);
 			}
 		}
 		//nit.start();
 	}
 	
-	/*
-	@Override
-	public void paint(Graphics g) {
-		
-		for(int i = 0; i < vrsta; i++) {
-			for(int j = 0; j < kolona; j++) {
-				rupe[i][j].paint(g);
-				
-			}
-		}
-		
+	public void setBrojKoraka(int k) {
+		brojKoraka = k;
+		for(Rupa[] i: rupe)
+			for(Rupa j: i)
+				j.setBrKoraka(k);
 	}
-	*/
 	
 	@Override
 	public void run() {
 		try {
 			while(!Thread.interrupted()) {
-				synchronized(this) {	
+				synchronized(this) {
+					Random r = new Random();
+					int r1 = r.nextInt(vrsta);
+					int r2 = r.nextInt(kolona);
+					//repaint();
+					if(rupe[r1][r2].getSlobodna())
+						rupe[r1][r2].setZivotinja(new Krtica(rupe[r1][r2]));
 				}
-				//repaint();
 				Thread.sleep(ms);
 			}
 		} catch(InterruptedException e) {
@@ -75,14 +70,22 @@ public class Basta extends Panel implements Runnable {
 		}
 	}
 	
+	public synchronized void pokreni() {	
+		nit.start();
+		for(int i = 0; i < vrsta; i++) {
+			for(int j = 0; j < kolona; j++) {
+				rupe[i][j].napraviNit();
+				rupe[i][j].pokreni();
+			}
+		}
+	}
+	
 	public synchronized void zavrsi() { 
 		nit.interrupt(); 
 		for(int i = 0; i < kolona; i++)
 			for(int j = 0 ; j < vrsta; j++)
-				rupe[i][j].zavrsi();
-		
-		
-		//nit = null;
+				if(rupe[i][j].nitPokrenuta())
+					rupe[i][j].zavrsi();	
 	}
 	
 }
