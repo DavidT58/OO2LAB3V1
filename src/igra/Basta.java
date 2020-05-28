@@ -31,7 +31,7 @@ public class Basta extends Panel implements Runnable {
 			for(int j = 0; j < kolona; j++) {
 				rupe[i][j] = new Rupa(this);
 				
-				Rupa t = rupe[i][j];
+				Rupa t = rupe[i][j];//zato sto u listeneru ne moze rupe[i][j]
 				rupe[i][j].addMouseListener(new MouseAdapter() {
 					public void mouseClicked(MouseEvent e) {
 						System.out.println("Mouse clicked " + e.getX() + ", " + e.getY());
@@ -82,7 +82,7 @@ public class Basta extends Panel implements Runnable {
 		nit.interrupt(); 
 		for(int i = 0; i < kolona; i++)
 			for(int j = 0 ; j < vrsta; j++)
-					rupe[i][j].zavrsi();	
+					rupe[i][j].zaustavi();	
 	}
 	
 }

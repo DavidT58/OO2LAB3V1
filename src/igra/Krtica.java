@@ -12,7 +12,7 @@ public class Krtica extends Zivotinja {
 
 	@Override
 	public void ispoljiEfekatUdarena() {
-		rupa.zavrsi();
+		rupa.zaustavi();
 	}
 
 	@Override

@@ -46,7 +46,10 @@ public class Rupa extends Canvas implements Runnable {
 		slobodna = false;
 	}
 	
-	public boolean nitPokrenuta() { return nit.isAlive(); }
+	public boolean nitPokrenuta() {
+		boolean ret = (nit != null) ? nit.isAlive() : false;
+		return ret;
+	}
 
 	@Override
 	public void run() { 
@@ -57,12 +60,11 @@ public class Rupa extends Canvas implements Runnable {
 					if(trenKorak >= brKoraka) {
 						trenKorak = 0;
 						Thread.sleep(2000);
-						zavrsi();
+						zaustavi();
 					}
 					trenKorak++;
 				}
 				Thread.sleep(100);
-				//System.out.println(trenKorak);
 			}
 		} catch (InterruptedException e) {}
 	}
@@ -79,7 +81,7 @@ public class Rupa extends Canvas implements Runnable {
 		nit.start();
 	}
 	
-	public synchronized void zavrsi() { 
+	public synchronized void zaustavi() { 
 		if(nit != null)
 			nit.interrupt();
 		nit = null;

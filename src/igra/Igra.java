@@ -17,7 +17,7 @@ import java.awt.event.WindowEvent;
 public class Igra extends Frame {
 	
 	private Basta basta;
-	private boolean radi;
+	private boolean uToku;
 	CheckboxGroup tezina;
 	Checkbox lako;
 	Checkbox srednje;
@@ -32,10 +32,15 @@ public class Igra extends Frame {
 		add(basta, BorderLayout.CENTER);
 		add(dodajMeni(), BorderLayout.EAST);
 		setSize(700, 700);
-		radi = false;
 		
 		dodajOsluskivace();
 		setVisible(true);
+	}
+	
+	private void azuriraj() {
+		basta = new Basta(4,4);
+		add(basta, BorderLayout.CENTER);
+		uToku = false;
 	}
 	
 	private void dodajOsluskivace() {
@@ -48,8 +53,17 @@ public class Igra extends Frame {
 		});
 		
 		kreniStani.addActionListener(e -> {
-			basta.setBrojKoraka(10);
-			basta.pokreni();
+			if(uToku) {
+				kreniStani.setLabel("STANI");
+				basta.zavrsi();
+				azuriraj();
+			}
+			else {
+				kreniStani.setLabel("KRENI");
+				basta.setBrojKoraka(10);
+				basta.pokreni();
+				uToku = true;
+			}
 		});
 		
 	}
@@ -74,8 +88,7 @@ public class Igra extends Frame {
 		p.add(srednje);
 		p.add(tesko);
 		
-		kreniStani = new Button("Kreni");
-		kreniStani.setActionCommand("lmao");
+		kreniStani = new Button("KRENI");
 		p.add(kreniStani);
 		
 		desniMeni.add(p);
