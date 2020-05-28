@@ -21,12 +21,10 @@ public class Krtica extends Zivotinja {
 	}
 
 	@Override
-	protected void crtaj(Graphics g, int x, int y, int sirina, int visina) {
+	public void crtaj() {
+		Graphics g = rupa.getGraphics();
 		g.setColor(Color.DARK_GRAY);
-		g.fillOval(x*sirina + sirina/2, y*visina + visina/2, sirina, visina);
-		
+		g.fillOval(0, 0, rupa.getWidth(), rupa.getHeight());
 	}
-	
-	
-	
+
 }

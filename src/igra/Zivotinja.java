@@ -10,7 +10,7 @@ public abstract class Zivotinja {
 	
 	public Zivotinja(Rupa r) {
 		rupa = r;
-		udarena = false;
+		udarena = false; 
 	}
 	
 	public boolean udarena() { return udarena; }
@@ -19,5 +19,5 @@ public abstract class Zivotinja {
 	
 	public abstract void ispoljiEfekatPobegla();
 	
-	protected abstract void crtaj(Graphics g, int x, int y, int sirina, int visina);
+	public abstract void crtaj();
 }
