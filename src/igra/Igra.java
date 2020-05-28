@@ -33,8 +33,7 @@ public class Igra extends Frame {
 		add(dodajMeni(), BorderLayout.EAST);
 		setSize(700, 700);
 		radi = false;
-		basta.setBrojKoraka(10);
-		basta.pokreni();
+		
 		dodajOsluskivace();
 		setVisible(true);
 	}
@@ -49,7 +48,8 @@ public class Igra extends Frame {
 		});
 		
 		kreniStani.addActionListener(e -> {
-			
+			basta.setBrojKoraka(10);
+			basta.pokreni();
 		});
 		
 	}

@@ -44,6 +44,8 @@ public class Basta extends Panel implements Runnable {
 		//nit.start();
 	}
 	
+	public int getBrojkoraka() { return brojKoraka; }
+	
 	public void setBrojKoraka(int k) {
 		brojKoraka = k;
 		for(Rupa[] i: rupe)
@@ -59,9 +61,11 @@ public class Basta extends Panel implements Runnable {
 					Random r = new Random();
 					int r1 = r.nextInt(vrsta);
 					int r2 = r.nextInt(kolona);
-					//repaint();
-					if(rupe[r1][r2].getSlobodna())
+					if(rupe[r1][r2].getSlobodna()) {
 						rupe[r1][r2].setZivotinja(new Krtica(rupe[r1][r2]));
+						rupe[r1][r2].napraviNit();
+						rupe[r1][r2].pokreni();
+					}
 				}
 				Thread.sleep(ms);
 			}
@@ -72,19 +76,12 @@ public class Basta extends Panel implements Runnable {
 	
 	public synchronized void pokreni() {	
 		nit.start();
-		for(int i = 0; i < vrsta; i++) {
-			for(int j = 0; j < kolona; j++) {
-				rupe[i][j].napraviNit();
-				rupe[i][j].pokreni();
-			}
-		}
 	}
 	
 	public synchronized void zavrsi() { 
 		nit.interrupt(); 
 		for(int i = 0; i < kolona; i++)
 			for(int j = 0 ; j < vrsta; j++)
-				if(rupe[i][j].nitPokrenuta())
 					rupe[i][j].zavrsi();	
 	}
 	
