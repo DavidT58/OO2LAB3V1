@@ -33,7 +33,7 @@ public class Igra extends Frame {
 		add(basta, BorderLayout.CENTER);
 		add(dodajMeni(), BorderLayout.EAST);
 		setSize(700, 700);
-		
+		//lmao
 		dodajOsluskivace();
 		setVisible(true);
 	}
