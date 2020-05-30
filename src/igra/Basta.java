@@ -79,6 +79,8 @@ public class Basta extends Panel implements Runnable {
 				}
 				labelPovrce.setText("Povrce: " + povrce);
 				Thread.sleep(ms);
+				ms = (int)(ms*0.99);
+				System.out.println("ms: " + ms);
 			}
 		} catch(InterruptedException e) {
 			//?

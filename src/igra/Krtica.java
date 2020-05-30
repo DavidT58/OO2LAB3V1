@@ -34,6 +34,7 @@ public class Krtica extends Zivotinja {
 		
 	}
 	/*
+	 * test
 	int newWidth = (int)(rupa.getWidth() * procenat);
 	int newHeight = (int)(rupa.getHeight() * procenat);
 	int newX = (int)(0.4);

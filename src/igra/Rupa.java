@@ -86,7 +86,6 @@ public class Rupa extends Canvas implements Runnable {
 		nit = null;
 		if(zivotinja != null && !zivotinja.udarena()) {
 			zivotinja.ispoljiEfekatPobegla();
-			basta.smanjiPovrce();
 		}
 		setZivotinja(null);
 		slobodna = true;
