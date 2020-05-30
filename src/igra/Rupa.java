@@ -3,6 +3,8 @@ package igra;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 @SuppressWarnings("serial")
 public class Rupa extends Canvas implements Runnable {
@@ -20,6 +22,12 @@ public class Rupa extends Canvas implements Runnable {
 		boja = new Color(210, 105, 30);
 		setBackground(boja);
 		slobodna = true;
+		addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				System.out.println("Mouse clicked " + e.getX() + ", " + e.getY());
+				zgazi();
+			}
+		});
 	}
 	
 	public boolean getSlobodna() { return slobodna; }
@@ -37,10 +45,9 @@ public class Rupa extends Canvas implements Runnable {
 		slobodna = (zivotinja == null) ? true : false;
 	}
 	
-	public void zgazi() {
+	public synchronized void zgazi() {
 		if(zivotinja != null)
 			zivotinja.ispoljiEfekatUdarena();
-		//slobodna = true; ???
 	}
 	
 	public boolean nitPokrenuta() {
@@ -56,13 +63,12 @@ public class Rupa extends Canvas implements Runnable {
 				synchronized(this) {
 					trenKorak++;
 					repaint();
+					if(trenKorak >= brKoraka) {
+						Thread.sleep(2000);
+						zaustavi();
+						repaint();
+					}
 				}
-				if(trenKorak >= brKoraka) {
-					Thread.sleep(2000);
-					zaustavi();
-					repaint();
-				}
-				
 				Thread.sleep(100);
 			}
 		} catch (InterruptedException e) {}
@@ -78,6 +84,10 @@ public class Rupa extends Canvas implements Runnable {
 	
 	public synchronized void pokreni() {
 		nit.start();
+	}
+	
+	public void zivotinjaEfekatNaBastu() {
+		basta.smanjiPovrce();
 	}
 	
 	public synchronized void zaustavi() { 

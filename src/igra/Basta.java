@@ -32,13 +32,6 @@ public class Basta extends Panel implements Runnable {
 		for(int i = 0; i < vrsta; i++) {
 			for(int j = 0; j < kolona; j++) {
 				rupe[i][j] = new Rupa(this);
-				Rupa t = rupe[i][j];	//zato sto u listeneru ne moze rupe[i][j]
-				rupe[i][j].addMouseListener(new MouseAdapter() {
-					public void mouseClicked(MouseEvent e) {
-						System.out.println("Mouse clicked " + e.getX() + ", " + e.getY());
-						t.zgazi();
-					}
-				});
 				add(rupe[i][j]);
 			}
 		}
@@ -76,11 +69,11 @@ public class Basta extends Panel implements Runnable {
 					rupe[r1][r2].napraviNit();
 					rupe[r1][r2].pokreni();
 					rupe[r1][r2].setSlobodna(false);
+					ms = (int)(ms*0.99);
 				}
 				labelPovrce.setText("Povrce: " + povrce);
 				Thread.sleep(ms);
-				ms = (int)(ms*0.99);
-				System.out.println("ms: " + ms);
+				//System.out.println("ms: " + ms);
 			}
 		} catch(InterruptedException e) {
 			//?

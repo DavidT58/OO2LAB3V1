@@ -11,13 +11,14 @@ public class Krtica extends Zivotinja {
 	}
 
 	@Override
-	public void ispoljiEfekatUdarena() {
+	public synchronized void ispoljiEfekatUdarena() {
 		rupa.zaustavi();
+		udarena = true;
 	}
 
 	@Override
-	public void ispoljiEfekatPobegla() {
-		
+	public synchronized void ispoljiEfekatPobegla() {
+		rupa.zivotinjaEfekatNaBastu();
 	}
 
 	@Override
