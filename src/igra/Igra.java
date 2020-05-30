@@ -15,28 +15,39 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+
 @SuppressWarnings("serial")
 public class Igra extends Frame {
-	
+	private static boolean postoji = false;
 	private Basta basta;
 	private boolean uToku;
-	CheckboxGroup tezina;
-	Checkbox lako;
-	Checkbox srednje;
-	Checkbox tesko;
-	Button kreniStani;
-	Label povrce;
+	private CheckboxGroup tezina;
+	private Checkbox lako;
+	private Checkbox srednje;
+	private Checkbox tesko;
+	private Button kreniStani;
+	private Label povrce;
 	
-	public Igra() {
+	public static void napraviIgru() {
+		if(!postoji) {
+			postoji = true;
+			new Igra();
+		}
+		else {
+			System.out.println("Igra vec postoji");
+		}
+	}
+	
+	private Igra() {
 		super("Whack-a-mole");
 		basta = new Basta(4,4);
 		add(basta, BorderLayout.CENTER);
 		add(dodajMeni(), BorderLayout.EAST);
 		setSize(700, 700);
-		//lmao
 		dodajOsluskivace();
 		setVisible(true);
 	}
+	
 	
 	private void azuriraj() {
 		lako.setEnabled(!uToku);
@@ -50,6 +61,7 @@ public class Igra extends Frame {
 			public void windowClosing(WindowEvent e) {
 				basta.zavrsi();
 				dispose();
+				postoji = false;
 			}
 		});
 		
@@ -119,8 +131,8 @@ public class Igra extends Frame {
 		kreniStani = new Button("KRENI");
 		p.add(kreniStani);
 		
-		povrce = new Label("Povrce: " + basta.getPovrce());
-		//povrce.setFont(new Font("Arial", Font.BOLD, 20));
+		povrce = basta.getLabelPovrce();
+		povrce.setFont(new Font("Arial", Font.BOLD, 20));
 		q.add(povrce, BorderLayout.CENTER);
 		
 		desniMeni.add(p);
@@ -129,6 +141,7 @@ public class Igra extends Frame {
 	}
 
 	public static void main(String[] args) {
-		new Igra();
+		Igra.napraviIgru(); //pokrece igru
+		Igra.napraviIgru(); //napise u konzoli da je igra vec postoji
 	}
 }

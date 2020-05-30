@@ -2,6 +2,7 @@ package igra;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.Label;
 import java.awt.Panel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -16,6 +17,7 @@ public class Basta extends Panel implements Runnable {
 	private int brojKoraka;
 	private Thread nit = new Thread(this);
 	private int vrsta, kolona;
+	private Label labelPovrce;
 	
 	public Basta(int v, int k) {
 		vrsta = v;
@@ -25,6 +27,7 @@ public class Basta extends Panel implements Runnable {
 		setBackground(Color.GREEN);
 		rupe = new Rupa[v][k];
 		setLayout(new GridLayout(v, k, 20, 20));
+		labelPovrce = new Label("Povrce: " + povrce);
 		
 		for(int i = 0; i < vrsta; i++) {
 			for(int j = 0; j < kolona; j++) {
@@ -40,6 +43,8 @@ public class Basta extends Panel implements Runnable {
 			}
 		}
 	}
+	
+	public Label getLabelPovrce() { return labelPovrce; }
 	
 	public void setInterval(int m) { ms = m; }
 	
@@ -72,7 +77,7 @@ public class Basta extends Panel implements Runnable {
 					rupe[r1][r2].pokreni();
 					rupe[r1][r2].setSlobodna(false);
 				}
-				System.out.println(povrce);
+				labelPovrce.setText("Povrce: " + povrce);
 				Thread.sleep(ms);
 			}
 		} catch(InterruptedException e) {
