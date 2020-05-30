@@ -52,16 +52,19 @@ public class Rupa extends Canvas implements Runnable {
 	public void run() { 
 		try {
 			while(!Thread.interrupted()) {
-				repaint();
+				//
 				synchronized(this) {
-					
+					trenKorak++;
+					repaint();
 				}
 				if(trenKorak >= brKoraka) {
-					trenKorak = 0;
+					//trenKorak = 0;
+					slobodna = true;
+					//repaint();
 					Thread.sleep(2000);
 					zaustavi();
 				}
-				trenKorak++;
+				
 				Thread.sleep(100);
 			}
 		} catch (InterruptedException e) {}
@@ -88,7 +91,7 @@ public class Rupa extends Canvas implements Runnable {
 			basta.smanjiPovrce();
 		}
 		setZivotinja(null);
-		slobodna = true;
+		//slobodna = true;
 	}
 	
 	@Override

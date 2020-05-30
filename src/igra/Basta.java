@@ -70,6 +70,7 @@ public class Basta extends Panel implements Runnable {
 					rupe[r1][r2].setZivotinja(new Krtica(rupe[r1][r2]));
 					rupe[r1][r2].napraviNit();
 					rupe[r1][r2].pokreni();
+					rupe[r1][r2].setSlobodna(false);
 				}
 				System.out.println(povrce);
 				Thread.sleep(ms);
