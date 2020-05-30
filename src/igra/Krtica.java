@@ -12,8 +12,8 @@ public class Krtica extends Zivotinja {
 
 	@Override
 	public synchronized void ispoljiEfekatUdarena() {
-		rupa.zaustavi();
 		udarena = true;
+		rupa.zaustavi();
 	}
 
 	@Override
