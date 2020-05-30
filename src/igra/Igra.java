@@ -142,6 +142,6 @@ public class Igra extends Frame {
 
 	public static void main(String[] args) {
 		Igra.napraviIgru(); //pokrece igru
-		Igra.napraviIgru(); //napise u konzoli da je igra vec postoji
+		Igra.napraviIgru(); //napise u konzoli da igra vec postoji
 	}
 }
