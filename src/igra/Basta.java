@@ -71,6 +71,7 @@ public class Basta extends Panel implements Runnable {
 					rupe[r1][r2].napraviNit();
 					rupe[r1][r2].pokreni();
 				}
+				System.out.println(povrce);
 				Thread.sleep(ms);
 			}
 		} catch(InterruptedException e) {
