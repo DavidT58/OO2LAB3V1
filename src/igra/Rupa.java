@@ -58,11 +58,9 @@ public class Rupa extends Canvas implements Runnable {
 					repaint();
 				}
 				if(trenKorak >= brKoraka) {
-					//trenKorak = 0;
-					slobodna = true;
-					//repaint();
 					Thread.sleep(2000);
 					zaustavi();
+					repaint();
 				}
 				
 				Thread.sleep(100);
@@ -91,7 +89,8 @@ public class Rupa extends Canvas implements Runnable {
 			basta.smanjiPovrce();
 		}
 		setZivotinja(null);
-		//slobodna = true;
+		slobodna = true;
+		trenKorak = 0;
 	}
 	
 	@Override
